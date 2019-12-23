@@ -1,3 +1,98 @@
-<script>
+<!DOCTYPE html>
 
-</script>
+<head>
+  <title>Rock Paper Scissors</title>
+</head>
+
+<html>
+  <body>
+    <script>
+
+
+      function computerPlay() {
+        return Math.floor(Math.random() * 3)
+      }
+
+      function playerSelection() {
+        let selection = prompt("Choose Wisely", "rock, paper, or scissors")
+        return selection
+      }
+
+      function interperateNumb(number) {
+        if (number == 0){
+          return "rock"
+        } else if (number == 1){
+          return "paper"
+        } else {
+          return "scissors"
+        }
+      }
+
+      function computerSelection(computerNumb) {
+        return interperateNumb(computerNumb)
+      }
+
+      function validatePlayerSelection(){
+        var playTest
+        let player = ''
+
+        while (player == ''){
+          player = playerSelection()
+          playTest = player.toLowerCase()
+          if (playTest == "rock" || playTest == "paper" || playTest == "scissors"){
+            player = playTest
+            return player
+          } else {
+            alert("Invalid Selection! Choose again!")
+            player = ''
+          }
+        }
+      }
+
+      function playGame(){
+
+        let computer = computerSelection(computerPlay())
+        let player = validatePlayerSelection()
+
+        console.log("The computer chose " + computer)
+        console.log("The player chose " + player)
+
+        if (computer == player){
+          return "Draw!"
+        } else if (player == "rock"){
+          return (computer == "scissors") ?  "player" :  "computer";
+        } else if (player == "paper"){
+          return (computer == "rock") ?  "player" :  "computer";
+        } else if (player == "scissors"){
+          return (computer == "paper") ?  "player" :  "computer";
+        }
+      }
+
+      function game(){
+        let playerScore = 0, computerScore = 0, games = 0
+
+        while (games < 5){
+          games += 1
+          let winner = playGame()
+          if (winner == "player"){
+            playerScore +=1
+          } else if (winner == "computer"){
+            computerScore +=1
+          }
+          console.log(playerScore)
+          console.log(computerScore)
+        }
+
+
+        if (playerScore > computerScore){
+          return "Player Wins!"
+        } else if (computerScore > playerScore) {
+          return "Computer Wins!"
+        } else {
+          return "Draw!"
+        }
+      }
+
+    </script>
+  </body>
+</html>
