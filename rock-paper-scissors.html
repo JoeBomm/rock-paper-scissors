@@ -74,13 +74,12 @@
         while (games < 5){
           games += 1
           let winner = playGame()
+          console.log(winner + " wins round " + games)
           if (winner == "player"){
             playerScore +=1
           } else if (winner == "computer"){
             computerScore +=1
           }
-          console.log(playerScore)
-          console.log(computerScore)
         }
 
 
